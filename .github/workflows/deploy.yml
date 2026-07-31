@@ -10,28 +10,90 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # ==========================================
+      # 1. Checkout
+      # ==========================================
       - name: Checkout
         uses: actions/checkout@v4
 
+      # ==========================================
+      # 2. Setup PHP
+      # ==========================================
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+          extensions: mbstring, bcmath, intl, pdo, pdo_mysql
+          tools: composer
+          coverage: none
+
+      # ==========================================
+      # 3. Install Composer dependencies
+      # ==========================================
+      - name: Install Composer dependencies
+        run: |
+          composer install \
+            --no-dev \
+            --prefer-dist \
+            --optimize-autoloader \
+            --no-interaction
+
+      # ==========================================
+      # 4. Setup Node.js
+      # ==========================================
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
+      # ==========================================
+      # 5. Install NPM dependencies
+      # ==========================================
       - name: Install NPM dependencies
         run: npm ci
 
+      # ==========================================
+      # 6. Build Vite
+      # ==========================================
       - name: Build Vite
         run: npm run build
 
+      # ==========================================
+      # 7. Setup SSH
+      # ==========================================
       - name: Setup SSH
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+          set -e
 
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+
+          printf '%s\n' "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          ssh-keyscan \
+            -p "${{ secrets.SSH_PORT }}" \
+            "${{ secrets.SSH_HOST }}" \
+            >> ~/.ssh/known_hosts
+
+          chmod 644 ~/.ssh/known_hosts
+
+      # ==========================================
+      # 8. Test SSH connection
+      # ==========================================
+      - name: Test SSH connection
+        run: |
+          ssh \
+            -i ~/.ssh/id_rsa \
+            -p "${{ secrets.SSH_PORT }}" \
+            -o BatchMode=yes \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "whoami && pwd && php -v"
+
+      # ==========================================
+      # 9. Create deployment package
+      # ==========================================
       - name: Create deployment package
         run: |
           tar \
@@ -39,26 +101,55 @@ jobs:
             --exclude="node_modules" \
             --exclude=".env" \
             --exclude="storage" \
-            -czf deploy.tar.gz .
+            --exclude="deploy.tar.gz" \
+            -czf /tmp/deploy.tar.gz .
 
+      # ==========================================
+      # 10. Upload deployment package
+      # ==========================================
       - name: Upload to server
         run: |
-          scp -P "${{ secrets.SSH_PORT }}" \
-            deploy.tar.gz \
+          scp \
+            -i ~/.ssh/id_rsa \
+            -P "${{ secrets.SSH_PORT }}" \
+            /tmp/deploy.tar.gz \
             "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/tmp/deploy.tar.gz"
 
-      - name: Extract on server
+      # ==========================================
+      # 11. Extract and deploy
+      # ==========================================
+      - name: Deploy to server
         run: |
-          ssh -p "${{ secrets.SSH_PORT }}" \
+          ssh \
+            -i ~/.ssh/id_rsa \
+            -p "${{ secrets.SSH_PORT }}" \
             "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" << 'EOF'
+
+          set -e
 
           cd /home/gundihrw/website
 
+          echo "===================================="
+          echo "Starting deployment"
+          echo "===================================="
+
+          echo "Extracting deployment package..."
           tar -xzf /tmp/deploy.tar.gz
 
+          echo "Removing temporary package..."
           rm -f /tmp/deploy.tar.gz
 
+          echo "Clearing old Laravel caches..."
           php artisan optimize:clear
+
+          echo "Running database migrations..."
           php artisan migrate --force
+
+          echo "Checking Laravel..."
+          php artisan about
+
+          echo "===================================="
+          echo "Deployment completed successfully"
+          echo "===================================="
 
           EOF
