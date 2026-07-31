@@ -17,10 +17,10 @@
 </div>
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-20 -mt-10">
-    <div class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 border border-gray-100 overflow-hidden">
+    <div class="bg-white rounded-3xl shadow-2xl p-6 sm:p-12 border border-gray-100">
         
         <!-- Foto Tim KKN -->
-        <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl mb-8 transform -translate-y-24 hover:scale-[1.01] transition-all duration-500 group border-8 border-white bg-white z-10 -mb-12">
+        <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl mb-8 transform -translate-y-12 sm:-translate-y-16 md:-translate-y-24 hover:scale-[1.01] transition-all duration-500 group border-4 md:border-8 border-white bg-white z-10 -mb-6 sm:-mb-8 md:-mb-12">
             <img src="{{ asset('images/fotobareng.jpg') }}" alt="Tim KKN BBK 8 UNAIR Gundih 1" class="w-full h-auto object-cover object-center md:h-[450px] lg:h-[500px]">
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end">
                 <div class="p-6 md:p-8 text-center w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -54,8 +54,8 @@
                 <div class="w-12 h-12 bg-indigo-600 text-white rounded-xl flex items-center justify-center mb-6 shadow-md">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Kolaborasi Tim</h3>
-                <p class="text-gray-600">Proyek ini dikembangkan secara kolaboratif bersama pihak kelurahan dan para pelaku UMKM setempat untuk memastikan website ini benar-benar menjawab kebutuhan masyarakat.</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Misi Program</h3>
+                <p class="text-gray-600">Membangun kolaborasi aktif bersama pihak kelurahan dan para pelaku UMKM setempat untuk menghadirkan website yang secara nyata memberdayakan dan menjawab kebutuhan masyarakat.</p>
             </div>
         </div>
 

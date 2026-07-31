@@ -4,11 +4,12 @@
 
 @section('content')
 <!-- Header Page -->
-<div class="bg-gray-900 py-16 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-kelurahan-primary to-blue-800 opacity-90"></div>
+<div class="bg-gray-900 py-20 relative overflow-hidden" style="background-image: url('{{ asset('images/footagerw5.jpg') }}'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0 bg-gradient-to-r from-kelurahan-primary/90 to-blue-900/90 mix-blend-multiply z-0"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/50 z-0"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-        <h1 class="text-4xl font-extrabold text-white sm:text-5xl font-heading tracking-tight mb-4">Direktori UMKM</h1>
-        <p class="text-lg text-blue-100 max-w-2xl mx-auto font-light">
+        <h1 class="text-4xl font-extrabold text-white sm:text-5xl font-heading tracking-tight mb-4 drop-shadow-lg">Direktori UMKM</h1>
+        <p class="text-lg text-blue-50 max-w-2xl mx-auto font-light drop-shadow">
             Temukan berbagai produk dan jasa unggulan dari Usaha Mikro, Kecil, dan Menengah di wilayah Kelurahan Gundih.
         </p>
     </div>
