@@ -39,7 +39,7 @@
     <div class="bg-white rounded-2xl shadow-xl p-8 sm:p-12 border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-8">
         <div class="md:w-1/3 text-center md:text-left">
             <h2 class="text-3xl font-extrabold text-gray-900 font-heading">
-                Berkembang <br class="hidden md:block"/>Bersama Masyarakat
+                Berkembang <br class="hidden md:block"/>Bersama Masyarakatt
             </h2>
             <div class="w-16 h-1 bg-kelurahan-primary mt-4 mx-auto md:mx-0 rounded-full"></div>
             <p class="mt-4 text-gray-600">
