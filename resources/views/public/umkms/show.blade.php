@@ -126,6 +126,45 @@
                 </div>
             </div>
 
+            <!-- Menu / Produk Kami -->
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 sm:p-10 mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center font-heading">
+                    <svg class="w-6 h-6 mr-3 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                    Menu / Produk Kami
+                </h3>
+                @if($umkm->products && $umkm->products->count() > 0)
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        @foreach($umkm->products as $product)
+                            <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 flex flex-col group hover:shadow-md transition-shadow">
+                                @if($product->foto)
+                                    <div class="h-48 w-full overflow-hidden">
+                                        <img src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->nama_produk }}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                                    </div>
+                                @endif
+                                <div class="p-5 flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <h4 class="text-lg font-bold text-gray-900 mb-1">{{ $product->nama_produk }}</h4>
+                                        @if($product->deskripsi)
+                                            <p class="text-sm text-gray-600 mb-3">{{ $product->deskripsi }}</p>
+                                        @endif
+                                    </div>
+                                    @if($product->harga)
+                                        <div class="mt-4 pt-3 border-t border-gray-200">
+                                            <span class="text-indigo-600 font-bold">Rp {{ number_format($product->harga, 0, ',', '.') }}</span>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <div class="text-center py-8 bg-gray-50 rounded-2xl border border-gray-100 border-dashed">
+                        <svg class="w-12 h-12 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        <p class="text-gray-500 font-medium">Belum ada menu atau produk yang ditambahkan.</p>
+                    </div>
+                @endif
+            </div>
+
             <!-- Peta Lokasi -->
             @if($umkm->peta_embed)
             <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 sm:p-10 mb-8">

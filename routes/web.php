@@ -5,13 +5,18 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\UmkmController;
 use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\NewsController as PublicNewsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PublicController::class, 'welcome'])->name('public.welcome');
 
 Route::get('/umkm', [PublicController::class, 'index'])->name('public.umkm.index');
 Route::get('/umkm/{id}', [PublicController::class, 'show'])->name('public.umkm.show');
+Route::get('/berita', [PublicNewsController::class, 'index'])->name('public.news.index');
+Route::get('/berita/{slug}', [PublicNewsController::class, 'show'])->name('public.news.show');
 Route::get('/tentang', [PublicController::class, 'about'])->name('public.about');
 Route::get('/tim-kkn', [PublicController::class, 'kknProfile'])->name('public.kkn');
 Route::get('/kontak', [PublicController::class, 'contact'])->name('public.contact');
@@ -26,6 +31,11 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::resource('categories', CategoryController::class);
     Route::resource('umkms', UmkmController::class);
     Route::resource('messages', MessageController::class)->only(['index', 'show', 'destroy']);
+    Route::resource('news', AdminNewsController::class);
+    Route::post('umkms/{umkm}/products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::put('products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
     Route::get('/profile-kelurahan', [\App\Http\Controllers\Admin\KelurahanProfileController::class, 'edit'])->name('profile-kelurahan.edit');
     Route::put('/profile-kelurahan', [\App\Http\Controllers\Admin\KelurahanProfileController::class, 'update'])->name('profile-kelurahan.update');
 });

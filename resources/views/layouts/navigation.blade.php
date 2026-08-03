@@ -23,6 +23,11 @@
             <span class="mx-3 font-medium">Kelola Kategori</span>
         </x-sidebar-link>
 
+        <x-sidebar-link :href="route('admin.news.index')" :active="request()->routeIs('admin.news.*')">
+            <svg class="w-5 h-5 opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5L18.5 7H20M9 11l3-3m0 0l3 3m-3-3v8"></path></svg>
+            <span class="mx-3 font-medium">Kelola Berita</span>
+        </x-sidebar-link>
+
         <x-sidebar-link :href="route('admin.messages.index')" :active="request()->routeIs('admin.messages.*')">
             <svg class="w-5 h-5 opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
             <span class="mx-3 font-medium">Pesan Masuk</span>

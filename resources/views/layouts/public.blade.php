@@ -38,6 +38,8 @@
                     
                     <a href="{{ route('public.umkm.index') }}" class="{{ request()->routeIs('public.umkm.*') ? 'text-kelurahan-primary border-b-2 border-kelurahan-primary font-semibold' : 'text-gray-600 hover:text-kelurahan-primary hover:border-b-2 hover:border-gray-300' }} inline-flex items-center px-1 pt-1 text-sm font-medium h-20 transition-colors">Daftar UMKM</a>
                     
+                    <a href="{{ route('public.news.index') }}" class="{{ request()->routeIs('public.news.*') ? 'text-kelurahan-primary border-b-2 border-kelurahan-primary font-semibold' : 'text-gray-600 hover:text-kelurahan-primary hover:border-b-2 hover:border-gray-300' }} inline-flex items-center px-1 pt-1 text-sm font-medium h-20 transition-colors">Berita</a>
+                    
                     <a href="/tentang" class="{{ request()->is('tentang') ? 'text-kelurahan-primary border-b-2 border-kelurahan-primary font-semibold' : 'text-gray-600 hover:text-kelurahan-primary hover:border-b-2 hover:border-gray-300' }} inline-flex items-center px-1 pt-1 text-sm font-medium h-20 transition-colors">Tentang</a>
                     
                     <a href="{{ route('public.kkn') }}" class="{{ request()->routeIs('public.kkn') ? 'text-kelurahan-primary border-b-2 border-kelurahan-primary font-semibold' : 'text-gray-600 hover:text-kelurahan-primary hover:border-b-2 hover:border-gray-300' }} inline-flex items-center px-1 pt-1 text-sm font-medium h-20 transition-colors">Tim KKN</a>
@@ -75,6 +77,7 @@
             <div class="pt-2 pb-3 space-y-1">
                 <a href="/" class="block pl-3 pr-4 py-2 border-l-4 border-kelurahan-primary text-base font-medium text-kelurahan-primary bg-blue-50">Beranda</a>
                 <a href="{{ route('public.umkm.index') }}" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300">Daftar UMKM</a>
+                <a href="{{ route('public.news.index') }}" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300">Berita</a>
                 <a href="/tentang" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300">Tentang</a>
                 <a href="{{ route('public.kkn') }}" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300">Tim KKN</a>
                 <a href="/kontak" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300">Kontak</a>

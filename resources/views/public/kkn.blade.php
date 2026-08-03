@@ -41,6 +41,39 @@
             </p>
         </div>
 
+        <!-- Dosen Pembimbing Lapangan -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 font-heading text-center">Dosen Pembimbing Lapangan</h2>
+            <div class="w-24 h-1 bg-kelurahan-secondary mx-auto mb-8 rounded-full"></div>
+            
+            <div class="max-w-3xl mx-auto bg-gradient-to-br from-blue-50 to-white rounded-3xl shadow-xl border border-blue-100 overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
+                <div class="md:flex">
+                    <div class="md:shrink-0 flex justify-center items-center p-8 md:p-0 md:pl-8 bg-blue-50 md:bg-transparent">
+                        <!-- Placeholder / Foto DPL -->
+                        <div class="h-40 w-40 rounded-full border-4 border-white shadow-lg bg-gray-200 flex items-center justify-center overflow-hidden">
+                            <svg class="h-20 w-20 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                            <!-- Jika sudah ada foto, ganti svg di atas dengan tag img seperti ini: -->
+                            <!-- <img src="{{ asset('images/foto-dpl.jpg') }}" alt="Foto DPL" class="h-full w-full object-cover"> -->
+                        </div>
+                    </div>
+                    <div class="p-8 md:p-10 text-center md:text-left flex-1 flex flex-col justify-center">
+                        <div class="uppercase tracking-wide text-sm text-kelurahan-primary font-bold mb-1">DPL Kelompok Gundih 1</div>
+                        <h3 class="block mt-1 text-2xl leading-tight font-bold text-gray-900 font-heading">[Nama DPL & Gelar]</h3>
+                        <p class="mt-2 text-kelurahan-secondary font-medium">Fakultas / Universitas Airlangga</p>
+                        
+                        <div class="mt-4 relative">
+                            <svg class="absolute -top-2 -left-3 h-6 w-6 text-blue-200 transform -scale-x-100" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
+                            <p class="text-gray-600 leading-relaxed italic pl-6">
+                                "[Tempat untuk pesan, sambutan, atau quote dari Dosen Pembimbing Lapangan terkait program pengabdian masyarakat di Kelurahan Gundih.]"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div class="bg-blue-50 rounded-2xl p-8 border border-blue-100 hover:shadow-lg transition-shadow">
                 <div class="w-12 h-12 bg-kelurahan-primary text-white rounded-xl flex items-center justify-center mb-6 shadow-md">
